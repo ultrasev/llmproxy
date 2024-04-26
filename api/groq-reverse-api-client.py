@@ -21,7 +21,7 @@ response = client.chat.completions.create(
         "The Los Angeles Dodgers won the World Series in 2020."
     }, {
         "role": "user",
-        "content": "Where was it played?"
+        "content": "鲁迅为什么打周树人？"
     }])
 
 print(response.choices[0].message.content)
