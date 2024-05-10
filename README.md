@@ -65,6 +65,15 @@ print(response.choices[0].message.content)
 
 <img src="https://s3.bmp.ovh/imgs/2024/04/29/e64e6a2787183c26.png" width="789">
 
+
+## YouTuBe 教程
+- 使用 Cloudflare Worker 搭建 LLM API 反向代理
+
+<a href="https://www.youtube.com/watch?v=rfn3lBC11Dk">
+    <img src="https://img.youtube.com/vi/rfn3lBC11Dk/0.jpg" alt="使用 Cloudflare Worker 搭建反向代理" width="320" height=200 style="border-radius: 15px;">
+</a>
+
+
 ## Notes
 - `workers.dev` 域名在国内无法直接访问，如果要在国内直接使用，需要自己配置域名。
 - 代码中对 Groq 的代理通过 [vercel.com](https://www.vercel.com) + FastAPI 又套了一层，仅做请求中转，不会保存任何数据，介意的话可以自己部署。
