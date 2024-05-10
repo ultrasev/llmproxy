@@ -8,8 +8,7 @@ load_dotenv()
 async def make_request(api_key: str,
                        model: str,
                        supplier: str):
-    BASE_URL = "http://192.168.31.46:8787"
-    # BASE_URL = "https://llmapi.ultrasev.com"
+    BASE_URL = "https://llmapi.ultrasev.com"
     client = AsyncOpenAI(base_url=BASE_URL, api_key=api_key)
     response = await client.chat.completions.create(
         model=model,
