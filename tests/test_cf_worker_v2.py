@@ -1,3 +1,4 @@
+import asyncio
 import pytest
 import os
 from dotenv import load_dotenv
@@ -7,18 +8,18 @@ load_dotenv()
 
 async def make_request(api_key: str,
                        model: str,
-                       supplier: str):
-    BASE_URL = "http://192.168.31.46:8787"
-    # BASE_URL = "https://llmapi.ultrasev.com"
+                       supplier: str,
+                       query: str = "what is the result of 2*21"):
+    BASE_URL = "https://llmapi.ultrasev.com/v2/{}".format(supplier)
     client = AsyncOpenAI(base_url=BASE_URL, api_key=api_key)
     response = await client.chat.completions.create(
         model=model,
         messages=[
             {"role": "system", "content": "You are a helpful assistant。"},
-            {"role": "user", "content": "what is the result of 2 * 21?"}
-        ],
-        extra_headers={"supplier": supplier},
+            {"role": "user", "content": query}
+        ]
     )
+    print(type(response), response)
     return response.choices[0].message.content
 
 
@@ -50,3 +51,17 @@ async def test_gpt():
         supplier="openai"
     )
     assert '42' in response
+
+
+@pytest.mark.asyncio
+async def test_cache_for_openai():
+    results = []
+    for _ in range(5):
+        response = await make_request(
+            api_key=os.environ["OPENAI_API_KEY"],
+            model="gpt-3.5-turbo-1106",
+            supplier="openai",
+            query="7 个小矮人的名字是什么？"
+        )
+        results.append(response)
+    assert len(set(results)) < len(results)
