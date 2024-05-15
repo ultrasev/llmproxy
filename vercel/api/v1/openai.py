@@ -2,6 +2,7 @@
 import typing
 
 import pydantic
+from fastapi import Header
 from fastapi.routing import APIRouter
 from openai import AsyncClient
 
@@ -9,14 +10,14 @@ router = APIRouter()
 
 
 class ChatArgs(pydantic.BaseModel):
-    api_key: str
     model: str
     messages: typing.List[typing.Dict[str, str]]
 
 
-@router.post("/")
-async def _openai_api(args: ChatArgs):
-    client = AsyncClient(api_key=args.api_key)
+@router.post("/chat/completions")
+async def groq_api(args: ChatArgs, authorization: str = Header(...)):
+    api_key = authorization.split(" ")[1]
+    client = AsyncClient(api_key=api_key)
     return await client.chat.completions.create(
         model=args.model,
         messages=args.messages,
