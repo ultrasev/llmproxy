@@ -1,6 +1,6 @@
 <p align="center">
- <img width="100px" src="public/vercel.png" align="center" alt=":package: deploy llm api proxy with vercel" />
- <h2 align="center">:package: deploy llm api proxy with vercel</h2>
+ <img width="100px" src="public/vercel.png" align="center" alt=":package: deploy reverse proxy for LLM API with vercel" />
+ <h2 align="center">:package: deploy reverse proxy for LLM API with vercel</h2>
 
 <p align="center">
   <a href="https://github.com/ultrasev/llmproxy/issues">

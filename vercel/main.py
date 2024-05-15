@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from api.usage import USAGE as html
+from public.usage import USAGE as html
 from api.hello import router as hello_router
 from api.v1.openai import router as openai_router
 from api.v1.groq import router as groq_router
