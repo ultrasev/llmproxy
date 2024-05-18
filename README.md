@@ -59,7 +59,7 @@ print(response.choices[0].message.content)
 ```
 
 # 部署自己的 Worker
-创建一个新的 cloudflare worker，把 [api/llm_api_proxy.js](https://raw.githubusercontent.com/ultrasev/llmproxy/proxy/api/llm_api_proxy.js) 中的代码粘贴进去，然后部署就可以。
+创建一个新的 cloudflare worker，把 [api/llm_api_proxy.js](./api/llm_api_proxy.js) 中的代码粘贴进去，然后部署就可以。
 
 配置自定义域名：设置 -> Triggers -> Custom Domains，把你的域名填进去，然后点击 add custom domain 即可。
 
