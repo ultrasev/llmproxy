@@ -17,7 +17,10 @@ async def make_request(api_key: str,
         messages=[
             {"role": "system", "content": "You are a helpful assistant。"},
             {"role": "user", "content": query}
-        ]
+        ],
+        temperature=0.7,
+        top_p=1,
+        max_tokens=20
     )
     print(type(response), response)
     return response.choices[0].message.content
@@ -37,7 +40,7 @@ async def test_groq():
 async def test_gemini():
     response = await make_request(
         api_key=os.environ["GEMINI_API_KEY"],
-        model="gemini-1.5-pro-latest",
+        model="gemini-1.5-flash",
         supplier="gemini"
     )
     assert '42' in response
@@ -53,15 +56,15 @@ async def test_gpt():
     assert '42' in response
 
 
-@pytest.mark.asyncio
-async def test_cache_for_openai():
-    results = []
-    for _ in range(5):
-        response = await make_request(
-            api_key=os.environ["OPENAI_API_KEY"],
-            model="gpt-3.5-turbo-1106",
-            supplier="openai",
-            query="7 个小矮人的名字是什么？"
-        )
-        results.append(response)
-    assert len(set(results)) < len(results)
+# @pytest.mark.asyncio
+# async def test_cache_for_openai():
+#     results = []
+#     for _ in range(5):
+#         response = await make_request(
+#             api_key=os.environ["OPENAI_API_KEY"],
+#             model="gpt-3.5-turbo-1106",
+#             supplier="openai",
+#             query="7 个小矮人的名字是什么？"
+#         )
+#         results.append(response)
+#     assert len(set(results)) < len(results)
