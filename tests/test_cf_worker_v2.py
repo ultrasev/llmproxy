@@ -40,7 +40,7 @@ async def test_groq():
 async def test_gemini():
     response = await make_request(
         api_key=os.environ["GEMINI_API_KEY"],
-        model="gemini-1.5-pro-latest",
+        model="gemini-1.5-flash",
         supplier="gemini"
     )
     assert '42' in response
