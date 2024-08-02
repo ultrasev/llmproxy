@@ -2091,7 +2091,7 @@ var src_default = {
   async fetch(req, env2, ctx) {
     const version2 = new URL(req.url).pathname.split("/")[1];
     if (req.method === "GET") {
-      return Response.redirect("https://dlj.one/v2cmo2", 302);
+      return Response.redirect("https://ioly.cc/v2cmo2", 302);
     }
     switch (version2) {
       case "v2":
