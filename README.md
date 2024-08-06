@@ -86,6 +86,15 @@ print(response.choices[0].message.content)
 - 代码中对 Groq 的代理通过 [vercel.com](https://www.vercel.com) + FastAPI 又套了一层，仅做请求中转，不会保存任何数据，介意的话可以自己部署。
 - 暂不支持流式输出，有大佬空闲了修改完可以 pull request。
 
+
+# Q & A
+## Gemini API 无法使用
+经常有小伙伴反馈 Groq 和 OpenAI 没有问题，但是 Gemini API 无法使用，一个可能的原因是：cloudflare 中转请求时会根据请求者 IP 按就近原则转发请求，而有的地区不被 Google AI 支持，比如香港，这样就会导致请求返回`User location is not supported for the API use` 的结果。解决方法是直接使用国内 IP 或者使用其他地区代理，比如美区。
+
+参考 issues：
+- https://github.com/ultrasev/llmproxy/issues/11
+- https://github.com/ultrasev/llmproxy/issues/4
+
 # 更新日志
 
 请访问 [CHANGELOG](CHANGELOG.md)
